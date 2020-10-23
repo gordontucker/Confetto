@@ -98,7 +98,7 @@ open class ConfettiView: UIView {
         emitter.emitterShape = .line
         emitter.emitterSize = CGSize(width: options.width ?? frame.size.width, height: 1)
         emitter.beginTime = CACurrentMediaTime() - options.preRunTime
-        emitter.scale = options.scale ?? (1.0 / Float(UIScreen.main.scale))
+        emitter.scale = options.scale ?? (emitter.scale / Float(UIScreen.main.scale))
             
         var cells = [CAEmitterCell]()
         for color in colors {

@@ -140,7 +140,7 @@ open class ConfettiView: UIView {
             return customImage
         }
 
-        let bundle = Bundle(for: ConfettiView.self)
+        let bundle = BundleToken.bundle
         let imagePath = bundle.path(forResource: fileName, ofType: fileType)
         let url = URL(fileURLWithPath: imagePath!)
         do {
@@ -180,4 +180,14 @@ open class ConfettiView: UIView {
     open func isActive() -> Bool {
     		return self.active
     }
+}
+
+private final class BundleToken {
+    static let bundle: Bundle = {
+        #if SWIFT_PACKAGE
+        return Bundle.module
+        #else
+        return Bundle(for: BundleToken.self)
+        #endif
+    }()
 }

@@ -14,6 +14,6 @@ let package = Package(
     targets: [
         .target(name: "Confetto",
                 path: "Pod",
-                resources: [.copy("Assets")])
+                resources: [.process("Assets")])
     ]
 )
